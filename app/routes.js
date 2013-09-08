@@ -4,9 +4,11 @@ var Routes = function() {
     this.route("attachment");
   });
   this.route("bugNew", {path: "bug/new"});
+  this.route("bugNew2", {path: "bug/new/:product"});
   this.route("attachment", {path: "attachment/:attachment_id"});
   this.route("dashboard");
   this.route("browse");
+  this.route("login");
 };
 
 export default Routes;

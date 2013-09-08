@@ -3,6 +3,7 @@ import Resolver from 'resolver';
 // #preload stuff not yet loaded via the container
 import FieldHelper from 'bugzilla/helpers/field';
 import FormatBytesHelper from 'bugzilla/helpers/format_bytes';
+import LinkifyHelper from 'bugzilla/helpers/linkify';
 
 // /preload
 
@@ -10,7 +11,7 @@ var App = Ember.Application.create({
   LOG_ACTIVE_GENERATION: true,
   LOG_VIEW_LOOKUPS: true,
   modulePrefix: 'bugzilla', // TODO: loaded via config
-  resolver: Resolver
+  Resolver: Resolver
 });
 
 import _ from 'bugzilla/ext/route';

@@ -9,11 +9,16 @@ App.rootElement = '#ember-testing';
 App.setupForTesting();
 App.injectTestHelpers();
 
-function exists(selector) {
-  return !!find(selector).length;
+function exists(selector, message) {
+  ok(!!find(selector).length, message);
+}
+
+function doesntExist(selector, message) {
+ ok(!find(selector).length, message);
 }
 
 window.exists = exists;
+window.doesntExist = doesntExist;
 
 $(function(){
   $('html').addClass('testing');
@@ -23,3 +28,21 @@ Ember.Container.prototype.stub = function(fullName, instance) {
   instance.destroy = instance.destroy || function() {};
   this.cache.dict[fullName] = instance;
 };
+
+Factory.define('product').
+  sequence('id').
+  sequence('name', function(i) { return 'Product #' + i; }).
+  attr('components', function() {
+    return [
+      Factory.attributes('component')
+    ];
+  });
+
+Factory.define('component').
+  sequence('id').
+  sequence('name', function(i) { return 'Component #' + i; });
+
+Factory.define('field').
+  sequence('id').
+  attr('api_name', null).
+  attr('display_name', null);
